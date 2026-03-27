@@ -1,0 +1,82 @@
+import { Component, AfterViewInit, HostListener, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { HeroComponent } from './components/hero/hero.component';
+import { ServicesComponent } from './components/services/services.component';
+import { ProcessComponent } from './components/process/process.component';
+import { PhilosophyComponent } from './components/philosophy/philosophy.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { SolutionsComponent } from './components/solutions/solutions.component';
+import { WhyUsComponent } from './components/why-us/why-us.component';
+import { InquiryComponent } from './components/inquiry/inquiry.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { CtaFooterComponent } from './components/cta-footer/cta-footer.component';
+
+gsap.registerPlugin(ScrollTrigger);
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    HeroComponent,
+    ServicesComponent,
+    ProcessComponent,
+    PhilosophyComponent,
+    ContactComponent,
+    SolutionsComponent,
+    WhyUsComponent,
+    InquiryComponent,
+    FaqComponent,
+    CtaFooterComponent
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent implements AfterViewInit {
+  isScrolled = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.isScrolled = window.scrollY > 50;
+      const header = document.querySelector('header');
+      if (header) {
+        if (this.isScrolled) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      }
+    }
+  }
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      // Small timeout to ensure all components are rendered
+      setTimeout(() => {
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        revealElements.forEach((el) => {
+          // Set initial state via JS
+          gsap.set(el, { autoAlpha: 0, y: 30 });
+
+          gsap.to(el, {
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            },
+            autoAlpha: 1, // autoAlpha handles visibility and opacity
+            y: 0,
+            duration: 1.2,
+            ease: 'power3.out'
+          });
+        });
+
+        // Ensure ScrollTrigger height calculations are accurate
+        ScrollTrigger.refresh();
+      }, 100);
+    }
+  }
+}

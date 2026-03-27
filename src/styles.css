@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+  /* Color Tokens - Tonal Depth */
+  --surface: #101419;
+  --surface-lowest: #0a0e13;
+  --surface-low: #181c21;
+  --surface-high: #262a30;
+  --surface-highest: #31353b;
+  --surface-variant: rgba(49, 53, 59, 0.6);
+
+  --on-surface: #e0e2ea;
+  --on-surface-variant: #c1c7d4;
+  
+  --primary: #4F9CF9;
+  --primary-container: #004785;
+  --primary-glow: rgba(79, 156, 249, 0.3);
+  
+  --secondary: #7C3AED;
+  --outline-variant: rgba(65, 71, 82, 0.2);
+  
+  /* Typography Scale - High-End Editorial */
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--on-surface-variant);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Typography Utilities */
+.display-lg {
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--on-surface);
+}
+
+.headline-lg {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+}
+
+.title-lg {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--on-surface);
+}
+
+.body-lg {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.label-md {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Layout - No-Line Rule */
+.section-low { background-color: var(--surface-low); }
+.section-lower { background-color: var(--surface-lowest); }
+.section-high { background-color: var(--surface-high); }
+.section-lowest { background-color: var(--surface-lowest); }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--surface-variant);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Ghost edge */
+}
+
+/* Common Components */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px var(--primary-glow);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--primary), #8bc1ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card Styling */
+.card-high {
+  background-color: var(--surface-highest);
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: transform 0.3s var(--ease-premium);
+}
+
+.card-high:hover {
+  transform: translateY(-5px);
+}
+
+/* Spacing Helpers */
+.mt-16 { margin-top: 4rem; }
+.mb-16 { margin-bottom: 4rem; }
+.py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+
+/* GSAP Reveal */
+.reveal {
+  visibility: hidden;
+}
