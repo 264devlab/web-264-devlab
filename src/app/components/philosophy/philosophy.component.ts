@@ -16,15 +16,15 @@ import { Component } from '@angular/core';
         </div>
         <div class="philosophy-content">
           <span class="label-md reveal">Filosofía Dev</span>
-          <h2 class="display-lg mt-4 mb-8 reveal">Devs apasionados por resolver problemas</h2>
+          <h2 class="display-lg mt-4 mb-12 reveal">Devs apasionados por resolver problemas</h2>
           <div class="markdown-body reveal">
-            <p class="body-lg mb-6">
+            <p class="body-lg mb-8">
               No somos una agencia masiva que delega proyectos. Somos un laboratorio de software compacto donde cada línea de código tiene un propósito.
             </p>
-            <p class="body-md mb-6">
+            <p class="body-md mb-8">
               Nuestro foco no es venderte un sistema, es ayudarte a que tu tecnología sea un motor y no una carga. Trabajamos con transparencia, código limpio y mucha comunicación.
             </p>
-            <div class="feature-tag">
+            <div class="feature-tag mt-12">
               <span class="dot"></span> No todo es hacer un sistema de cero
             </div>
           </div>

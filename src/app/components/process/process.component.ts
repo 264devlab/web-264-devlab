@@ -75,10 +75,10 @@ import { Component } from '@angular/core';
 })
 export class ProcessComponent {
   steps = [
-    { tag: 'Discovery', title: 'La Idea', description: 'Nos contás tu problema o visión inicial. Escuchamos qué necesitás resolver sin vueltas técnicas innecesarias.' },
-    { tag: 'Strategy', title: 'Propuesta', description: 'Diseñamos el camino técnico más eficiente. Te presentamos una hoja de ruta clara con costos y tiempos cerrados.' },
-    { tag: 'Production', title: 'Desarrollo', description: 'Construimos iterando y mostrándote avances reales. Estás en contacto directo con los que pican el código.' },
-    { tag: 'Launch', title: 'Entrega', description: 'Lanzamos la solución pulida al 100%. Te entregamos todo listo para funcionar, sin cabos sueltos ni sorpresas.' },
-    { tag: 'Growth', title: 'Seguimiento', description: 'Auditamos y mejoramos según el uso real. Tu éxito a largo plazo es nuestro mejor portfolio.' }
+    { tag: 'Exploración', title: 'Mapeo de la Visión', description: 'Nos contás tu problema o visión inicial. Escuchamos qué necesitás resolver sin vueltas técnicas innecesarias.' },
+    { tag: 'Estrategia', title: 'Plan de Acción Técnico', description: 'Diseñamos el camino técnico más eficiente. Te presentamos una hoja de ruta clara con costos y tiempos cerrados.' },
+    { tag: 'Ejecución', title: 'Desarrollo Ágil', description: 'Construimos iterando y mostrándote avances reales. Estás en contacto directo con los que pican el código.' },
+    { tag: 'Despliegue', title: 'Puesta en Marcha', description: 'Lanzamos la solución pulida al 100%. Te entregamos todo listo para funcionar, sin cabos sueltos ni sorpresas.' },
+    { tag: 'Evolución', title: 'Mejora Continua', description: 'Auditamos y mejoramos según el uso real. Tu éxito a largo plazo es nuestro mejor portfolio.' }
   ];
 }

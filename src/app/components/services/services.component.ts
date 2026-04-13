@@ -5,17 +5,26 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <section class="services section-low">
+    <section class="services section-low py-32">
       <div class="container">
-        <h2 class="headline-lg">Qué hacemos</h2>
+        <div class="header-split mb-16 reveal">
+          <div>
+            <span class="label-md">Expertise</span>
+            <h2 class="display-lg mt-4">Qué hacemos</h2>
+          </div>
+          <p class="body-lg max-w-md">Transformamos ideas complejas en soluciones digitales simples, escalables y orientadas a resultados.</p>
+        </div>
+
         <div class="services-grid">
-          @for (service of services; track service.title) {
-            <div class="card-high">
-              <div class="service-icon">
-                <div class="pip"></div>
+          @for (service of services; track service.title; let i = $index) {
+            <div class="service-card card-high reveal" [class.offset-y]="i % 2 !== 0">
+              <div class="service-num-bar">
+                <span class="service-number text-gradient-primary">0{{ i + 1 }}</span>
               </div>
-              <h3 class="title-lg">{{ service.title }}</h3>
-              <p>{{ service.description }}</p>
+              <h3 class="title-lg mt-8">{{ service.title }}</h3>
+              <p class="mt-6 body-md opacity-80">{{ service.description }}</p>
+              
+              <div class="glow-line mt-8"></div>
             </div>
           }
         </div>
@@ -23,37 +32,67 @@ import { Component } from '@angular/core';
     </section>
   `,
   styles: [`
-    .services {
-      padding: 10rem 2rem;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    h2 {
-      margin-bottom: 4rem;
-    }
+    .services { position: relative; overflow: hidden; }
+    .header-split { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+    .max-w-md { max-width: 450px; }
+    
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      padding-bottom: 4rem;
     }
-    .service-icon {
-      margin-bottom: 1.5rem;
+
+    .service-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem 3rem;
+      border: 1px solid var(--outline-variant);
+      background: linear-gradient(180deg, var(--surface-highest) 0%, var(--surface-high) 100%);
+      overflow: hidden;
+      border-radius: 1.5rem;
     }
-    .pip {
-      width: 8px;
-      height: 8px;
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--primary-glow);
+
+    .offset-y { transform: translateY(2.5rem); }
+
+    .service-num-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
     }
-    h3 {
-      margin-bottom: 1rem;
-      color: var(--primary);
+
+    .service-number {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
     }
-    p {
-      color: var(--on-surface-variant);
-      font-size: 0.9375rem;
+
+    .glow-line {
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      transition: width 0.6s var(--ease-premium);
+    }
+
+    .service-card:hover .glow-line { width: 100%; }
+
+    .service-card:hover {
+      border-color: var(--primary-container);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.05);
+    }
+
+    h3 { color: var(--on-surface); }
+    .opacity-80 { opacity: 0.8; }
+    .mt-6 { margin-top: 1.5rem; }
+
+    @media (max-width: 968px) {
+      .offset-y { transform: none; }
+      .services-grid { gap: 1.5rem; padding-bottom: 0; }
+      .header-split { flex-direction: column; align-items: flex-start; }
+      .service-card { padding: 2.5rem 2rem; }
     }
   `]
 })

@@ -8,17 +8,17 @@ import gsap from 'gsap';
   template: `
     <section class="hero container">
       <div class="hero-content">
-        <h1 #title class="display-lg reveal">
+        <h1 #title class="display-lg reveal mb-8">
           Soluciones tecnológicas <br>
           <span class="text-gradient-primary">claras, sin vueltas</span>
         </h1>
-        <p #text class="hero-description reveal">
+        <p #text class="hero-description reveal mb-12">
           Desarrollamos sistemas, páginas web y herramientas digitales pensadas para resolver problemas reales. 
           Nos contás qué necesitás y lo vemos juntos.
         </p>
         <div #cta class="hero-btns reveal">
-          <button class="btn-primary">Contactanos</button>
-          <button class="btn-glass">Ver qué hacemos</button>
+          <a href="https://wa.me/5492644518136?text=Hola%20264DevLab%2C%20me%20gustar%C3%ADa%20Consultar%20por%20un%20desarrollo." target="_blank" class="btn-primary">Contactanos ahora</a>
+          <a href="#services" class="btn-secondary">Ver qué hacemos</a>
         </div>
       </div>
       <div class="hero-visual reveal shadow-xl" #visual>
@@ -49,7 +49,7 @@ import gsap from 'gsap';
       grid-template-columns: 1.2fr 1fr;
       align-items: center;
       gap: 4rem;
-      padding-top: 8rem;
+      padding-top: 6rem;
     }
     .hero-content {
       z-index: 5;
@@ -57,27 +57,12 @@ import gsap from 'gsap';
     .hero-description {
       font-size: 1.25rem;
       color: var(--on-surface-variant);
-      margin: 2rem 0 3.5rem;
+      margin: 3rem 0 4rem;
       max-width: 580px;
     }
     .hero-btns {
       display: flex;
-      gap: 1.5rem;
-    }
-    .btn-glass {
-      padding: 0.875rem 2rem;
-      border-radius: 0.75rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--on-surface);
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-      transition: all 0.3s var(--ease-premium);
-    }
-    .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.1);
+      gap: 1rem;
     }
     .hero-visual {
       position: relative;
@@ -119,8 +104,24 @@ import gsap from 'gsap';
     @media (max-width: 968px) {
       .hero { grid-template-columns: 1fr; text-align: center; padding-top: 6rem; }
       .hero-content { display: flex; flex-direction: column; align-items: center; }
-      .hero-btns { justify-content: center; }
+      .hero-btns {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
       .hero-visual { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
     }
   `]
 })

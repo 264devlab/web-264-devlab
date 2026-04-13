@@ -36,8 +36,23 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class AppComponent implements AfterViewInit {
   isScrolled = false;
+  isMenuOpen = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (this.isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    document.body.style.overflow = '';
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

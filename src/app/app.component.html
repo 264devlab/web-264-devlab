@@ -1,17 +1,36 @@
-<header class="glass">
+<header class="glass" [class.menu-open]="isMenuOpen">
   <div class="container nav-content">
     <div class="logo">
       <span class="text-gradient-primary">264</span>DevLab
     </div>
-    <div class="nav-links">
-      <a href="#services">Qué hacemos</a>
-      <a href="#why-us">¿Por qué?</a>
-      <a href="#process">Proceso</a>
-      <a href="#faq">FAQ</a>
-      <button class="btn-primary">WhatsApp</button>
+    
+    <div class="nav-actions">
+      <div class="desktop-links">
+        <a href="#services">Qué hacemos</a>
+        <a href="#why-us">¿Por qué?</a>
+        <a href="#process">Proceso</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      
+      <a href="https://wa.me/5492644518136?text=Hola%20264DevLab%2C%20me%20gustar%C3%ADa%20consultar%20por%20un%20desarrollo." target="_blank" class="btn-primary whatsapp-btn">WhatsApp</a>
+      
+      <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Menú">
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 </header>
+
+<div class="mobile-overlay glass" [class.active]="isMenuOpen">
+  <nav class="mobile-nav">
+    <a href="#services" (click)="closeMenu()">Qué hacemos</a>
+    <a href="#why-us" (click)="closeMenu()">¿Por qué?</a>
+    <a href="#process" (click)="closeMenu()">Proceso</a>
+    <a href="#faq" (click)="closeMenu()">FAQ</a>
+    <a href="#solutions" (click)="closeMenu()">Soluciones</a>
+  </nav>
+</div>
 
 <main>
   <app-hero></app-hero>

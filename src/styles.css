@@ -92,10 +92,137 @@ body {
 
 /* Glassmorphism */
 .glass {
-  background: var(--surface-variant);
+  background: rgba(16, 20, 25, 0.8) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Ghost edge */
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+/* Header Layout */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.25rem 0;
+  transition: all 0.4s var(--ease-premium);
+}
+
+header.scrolled {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.desktop-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.desktop-links a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  transition: color 0.3s;
+}
+
+.desktop-links a:hover {
+  color: var(--primary);
+}
+
+/* Hamburger Button */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--on-surface);
+  transition: all 0.3s var(--ease-premium);
+  border-radius: 2px;
+}
+
+.hamburger-btn.active span:first-child { transform: translateY(4px) rotate(45deg); }
+.hamburger-btn.active span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+/* Mobile Overlay */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--surface); /* Fallback */
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s var(--ease-premium);
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-nav a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.mobile-nav a:hover {
+  transform: scale(1.1);
+  color: var(--primary);
+}
+
+@media (max-width: 968px) {
+  .desktop-links { display: none; }
+  .hamburger-btn { display: flex; align-items: center; }
+  .nav-actions { gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
 }
 
 /* Common Components */
@@ -107,16 +234,39 @@ body {
   background: linear-gradient(135deg, var(--primary), var(--primary-container));
   color: white;
   border: none;
+  font-family: var(--font-display);
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
+  transition: all 0.3s var(--ease-premium);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 15px 30px var(--primary-glow);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: var(--on-surface);
+  border: 1px solid var(--outline-variant);
+  font-family: var(--font-display);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-premium);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-highest);
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
 .text-gradient-primary {
@@ -141,7 +291,22 @@ body {
 /* Spacing Helpers */
 .mt-16 { margin-top: 4rem; }
 .mb-16 { margin-bottom: 4rem; }
+.mt-12 { margin-top: 3rem; }
+.mb-12 { margin-bottom: 3rem; }
+.mt-8 { margin-top: 2.5rem; }
+.mb-8 { margin-bottom: 2.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
 .py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+
+@media (max-width: 768px) {
+  .py-24 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .py-32 { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .mt-16 { margin-top: 3rem; }
+  .mb-16 { margin-bottom: 3rem; }
+}
 
 /* GSAP Reveal */
 .reveal {
