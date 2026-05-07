@@ -1,0 +1,192 @@
+/* Header Layout */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1100;
+  padding: 0.75rem 0;
+  transition: all 0.4s var(--ease-premium);
+  border: 1px solid transparent;
+  border-radius: 0;
+}
+
+header.scrolled {
+  top: 1rem !important;
+  width: calc(100% - 3rem) !important;
+  max-width: 1200px !important;
+  padding: 0.6rem 0 !important;
+  border-radius: 50px !important;
+  border: 1px solid var(--outline-variant) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+header.scrolled .btn-primary {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+header.scrolled .logo {
+  font-size: 1.25rem;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+  transition: all 0.4s var(--ease-premium);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.desktop-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.desktop-links a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  transition: color 0.3s;
+}
+
+.desktop-links a:hover {
+  color: var(--primary);
+}
+
+/* Hamburger Button */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--on-surface);
+  transition: all 0.3s var(--ease-premium);
+  border-radius: 2px;
+}
+
+.hamburger-btn.active span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--surface);
+  /* Fallback */
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s var(--ease-premium);
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: var(--on-surface);
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1060;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.mobile-close-btn:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-nav a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.mobile-nav a:hover {
+  transform: scale(1.1);
+  color: var(--primary);
+}
+
+@media (max-width: 968px) {
+  .desktop-links {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-actions {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header .whatsapp-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}

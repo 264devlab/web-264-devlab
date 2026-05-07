@@ -1,0 +1,37 @@
+<header class="glass" [class.menu-open]="isMenuOpen" [class.scrolled]="isScrolled">
+  <div class="container nav-content">
+    <a href="#" class="logo" style="text-decoration: none;" (click)="closeMenu()">
+      <span class="text-gradient-primary">264</span>DevLab
+    </a>
+    
+    <div class="nav-actions">
+      <div class="desktop-links">
+        <a href="#services">Qué hacemos</a>
+        <a href="#solutions">Proyectos</a>
+        <a href="#process">Proceso</a>
+        <a href="#why-us">Valores</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      
+      <a href="https://wa.me/5492643161263?text=Hola%20264DevLab%2C%20me%20gustar%C3%ADa%20consultar%20por%20un%20desarrollo." target="_blank" class="btn-primary whatsapp-btn">WhatsApp</a>
+      
+      <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-overlay glass" [class.active]="isMenuOpen">
+  <button class="mobile-close-btn" (click)="closeMenu()" aria-label="Cerrar Menú">&times;</button>
+  <nav class="mobile-nav">
+    <a href="#services" (click)="closeMenu()">Qué hacemos</a>
+    <a href="#solutions" (click)="closeMenu()">Proyectos</a>
+    <a href="#process" (click)="closeMenu()">Proceso</a>
+    <a href="#why-us" (click)="closeMenu()">Valores</a>
+    <a href="#faq" (click)="closeMenu()">FAQ</a>
+    <a href="https://wa.me/5492643161263?text=Hola%20264DevLab%2C%20me%20gustar%C3%ADa%20consultar%20por%20un%20desarrollo." target="_blank" class="btn-primary mobile-whatsapp-btn mt-8" (click)="closeMenu()">WhatsApp</a>
+  </nav>
+</div>
