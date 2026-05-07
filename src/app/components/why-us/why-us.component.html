@@ -1,0 +1,19 @@
+<section class="why-us section-low py-32">
+      <div class="container">
+        <div class="header-left mb-16">
+          <span class="label-md reveal">Nuestros Valores</span>
+          <h2 class="display-lg mt-4 reveal">¿Por qué trabajar con nosotros?</h2>
+          <p class="body-lg mt-4 reveal">Un enfoque artesanal para desafíos digitales complejos.</p>
+        </div>
+
+        <div class="values-grid">
+          @for (item of values; track item.title) {
+            <div class="value-card reveal">
+              <div class="value-index">{{ item.index }}</div>
+              <h3 class="title-lg mb-2">{{ item.title }}</h3>
+              <p class="body-md">{{ item.description }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>

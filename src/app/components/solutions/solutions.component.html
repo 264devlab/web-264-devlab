@@ -1,0 +1,20 @@
+<section class="solutions section-lower py-32">
+      <div class="container">
+        <span class="label-md reveal">Featured Work</span>
+        <h2 class="headline-lg mt-4 mb-16 reveal">Soluciones Recientes</h2>
+        
+        <div class="solutions-grid">
+          @for (project of projects; track project.title) {
+            <div class="solution-card reveal shadow-2xl">
+              <div class="card-visual">
+                <div class="mock-screenshot" [style.background]="project.gradient"></div>
+              </div>
+              <div class="card-body">
+                <h3 class="title-lg mb-2">{{ project.title }}</h3>
+                <p class="body-md">{{ project.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>

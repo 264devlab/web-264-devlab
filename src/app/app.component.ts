@@ -32,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
     CtaFooterComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements AfterViewInit {
   isScrolled = false;

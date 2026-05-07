@@ -1,0 +1,26 @@
+<section class="process py-32">
+      <div class="container">
+        <div class="header-center mb-16">
+          <span class="label-md reveal">Metodología</span>
+          <h2 class="display-lg mt-4 reveal">Nuestro Proceso</h2>
+          <p class="body-lg mt-4 reveal">Un flujo de trabajo diseñado para que cada paso aporte valor real a tu proyecto.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+          @for (step of steps; track step.title; let i = $index) {
+            <div class="timeline-item reveal" [class.reverse]="i % 2 !== 0">
+              <div class="timeline-dot">
+                <span>{{ i + 1 }}</span>
+              </div>
+              <div class="timeline-content card-high">
+                <span class="step-tag">{{ step.tag }}</span>
+                <h3 class="title-lg mt-2 mb-4">{{ step.title }}</h3>
+                <p class="body-md">{{ step.description }}</p>
+              </div>
+              <div class="timeline-spacer"></div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>

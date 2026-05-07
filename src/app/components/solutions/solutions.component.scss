@@ -1,0 +1,49 @@
+.solutions {
+      position: relative;
+      overflow: hidden;
+    }
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 3rem;
+    }
+    .solution-card {
+      background: var(--surface-high);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.4s var(--ease-premium);
+    }
+    .solution-card:hover {
+      transform: translateY(-8px);
+    }
+    .card-visual {
+      height: 280px;
+      padding: 1.5rem;
+      background: var(--surface-low);
+    }
+    .mock-screenshot {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.75rem;
+      opacity: 0.6;
+      position: relative;
+    }
+    .mock-screenshot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent);
+    }
+    .card-body {
+      padding: 2.5rem;
+    }
+    p {
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .solutions-grid { grid-template-columns: 1fr; }
+      .card-visual { height: 200px; }
+    }

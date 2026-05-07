@@ -1,0 +1,25 @@
+<section class="services section-low py-32">
+      <div class="container">
+        <div class="header-split mb-16 reveal">
+          <div>
+            <span class="label-md">Expertise</span>
+            <h2 class="display-lg mt-4">Qué hacemos</h2>
+          </div>
+          <p class="body-lg max-w-md">Transformamos ideas complejas en soluciones digitales simples, escalables y orientadas a resultados.</p>
+        </div>
+
+        <div class="services-grid">
+          @for (service of services; track service.title; let i = $index) {
+            <div class="service-card card-high reveal" [class.offset-y]="i % 2 !== 0">
+              <div class="service-num-bar">
+                <span class="service-number text-gradient-primary">0{{ i + 1 }}</span>
+              </div>
+              <h3 class="title-lg mt-8">{{ service.title }}</h3>
+              <p class="mt-6 body-md opacity-80">{{ service.description }}</p>
+              
+              <div class="glow-line mt-8"></div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
