@@ -67,31 +67,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      // Small timeout to ensure all components are rendered
-      setTimeout(() => {
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        revealElements.forEach((el) => {
-          // Set initial state via JS
-          gsap.set(el, { autoAlpha: 0, y: 30 });
-
-          gsap.to(el, {
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 85%',
-              toggleActions: 'play none none none'
-            },
-            autoAlpha: 1, // autoAlpha handles visibility and opacity
-            y: 0,
-            duration: 1.2,
-            ease: 'power3.out'
-          });
-        });
-
-        // Ensure ScrollTrigger height calculations are accurate
-        ScrollTrigger.refresh();
-      }, 100);
-    }
+    // Component specific animations are handled in their respective components
   }
 }
