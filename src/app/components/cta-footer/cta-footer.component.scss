@@ -18,3 +18,6 @@
       .cta-btns { flex-direction: column; align-items: stretch; }
       .cta-card { padding: 4rem 2rem; }
     }
+    @media (max-width: 480px) {
+      .cta-card { padding: 2.5rem 1.25rem; }
+    }

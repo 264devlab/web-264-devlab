@@ -26,6 +26,10 @@
   --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -103,15 +107,33 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  z-index: 1000;
-  padding: 1.25rem 0;
+  margin: 0 auto;
+  z-index: 1100;
+  padding: 0.75rem 0;
   transition: all 0.4s var(--ease-premium);
+  border: 1px solid transparent;
+  border-radius: 0;
 }
 
 header.scrolled {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--outline-variant);
+  top: 2.5rem !important;
+  width: calc(100% - 3rem) !important;
+  max-width: 1200px !important;
+  padding: 0.6rem 0 !important;
+  border-radius: 50px !important;
+  border: 1px solid var(--outline-variant) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+header.scrolled .btn-primary {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+header.scrolled .logo {
+  font-size: 1.25rem;
 }
 
 .nav-content {
@@ -125,6 +147,7 @@ header.scrolled {
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--on-surface);
+  transition: all 0.4s var(--ease-premium);
 }
 
 .nav-actions {
@@ -195,6 +218,25 @@ header.scrolled {
   visibility: visible;
 }
 
+.mobile-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: var(--on-surface);
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1060;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.mobile-close-btn:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
 .mobile-nav {
   display: flex;
   flex-direction: column;
@@ -219,6 +261,12 @@ header.scrolled {
   .desktop-links { display: none; }
   .hamburger-btn { display: flex; align-items: center; }
   .nav-actions { gap: 1rem; }
+}
+
+@media (max-width: 768px) {
+  header .whatsapp-btn {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -302,10 +350,17 @@ header.scrolled {
 .py-32 { padding-top: 8rem; padding-bottom: 8rem; }
 
 @media (max-width: 768px) {
+  .container { padding: 0 1.5rem; }
   .py-24 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .py-32 { padding-top: 4.5rem; padding-bottom: 4.5rem; }
   .mt-16 { margin-top: 3rem; }
   .mb-16 { margin-bottom: 3rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .display-lg { font-size: 2rem !important; }
+  .headline-lg { font-size: 1.6rem !important; }
 }
 
 /* GSAP Reveal */

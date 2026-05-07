@@ -12,9 +12,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 })
 export class FaqComponent implements AfterViewInit {
   faqs = [
-    { question: '¿Cómo se manejan los costos?', answer: 'Trabajamos con presupuestos cerrados por hitos de entrega. Sabés exactamente cuánto y cuándo vas a invertir.' },
-    { question: '¿Cuánto tiempo lleva un desarrollo?', answer: 'Depende de la complejidad. Un MVP suele tomar de 4 a 8 semanas, mientras que sistemas robustos se escalan en iteraciones continuas.' },
-    { question: '¿Qué servicios de seguimiento ofrecen?', answer: 'Ofrecemos auditorías técnicas mensuales y mantenimiento evolutivo para que tu herramienta nunca se quede atrás.' }
+    {
+      question: '¿Tengo que saber de tecnología para trabajar con ustedes?',
+      answer: 'Para nada. Nosotros hablamos tu mismo idioma: el de los negocios. Vos nos contás qué problema operativo tenés o qué querés lograr comercialmente, y nosotros nos encargamos de traducirlo a la tecnología adecuada. Cero tecnicismos innecesarios.'
+    },
+    {
+      question: '¿Qué pasa si el sistema falla o necesito ayuda después?',
+      answer: 'No te dejamos a la deriva. Todo proyecto que entregamos incluye un periodo de garantía post-lanzamiento para asegurar que todo funcione perfecto en el mundo real. Además, ofrecemos planes de soporte y mantenimiento para que tu herramienta siga evolucionando junto a tu negocio.'
+    },
+    {
+      question: '¿Cómo se manejan los costos y los pagos?',
+      answer: 'Olvidate de los presupuestos sorpresa. Trabajamos con costos cerrados y cobramos por "hitos" (etapas del proyecto). Esto significa que solo pagás a medida que nosotros te demostramos avances reales y tangibles. Total transparencia desde el día uno.'
+    },
+    {
+      question: '¿Cuánto tiempo lleva construir un sistema?',
+      answer: 'Depende de qué tan grande sea tu idea. Por lo general, una primera versión funcional (para que ya puedas usarla o probarla con clientes) nos toma entre 4 y 8 semanas. A partir de ahí, vamos sumando nuevas funcionalidades mes a mes para que no tengas que esperar un año para ver resultados.'
+    }
   ];
 
   constructor(
@@ -40,7 +53,7 @@ export class FaqComponent implements AfterViewInit {
       (context) => {
         const { reduceMotion } = context.conditions as { reduceMotion: boolean; isDesktop: boolean; isMobile: boolean };
         const host = this.el.nativeElement;
-        
+
         const reveals = host.querySelectorAll('.reveal');
 
         if (reduceMotion) {
@@ -66,7 +79,7 @@ export class FaqComponent implements AfterViewInit {
           stagger: 0.15
         });
 
-        return () => {};
+        return () => { };
       }
     );
   }

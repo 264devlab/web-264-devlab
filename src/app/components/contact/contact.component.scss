@@ -21,7 +21,7 @@
     .footer-group a:hover { color: var(--primary); transform: translateX(5px); }
     
     .contact-link svg { opacity: 0.6; }
-    .footer-bottom { border-top: 1px solid var(--outline-variant); text-align: center; }
+    .footer-bottom { border-top: 1px solid var(--outline-variant); text-align: center; padding-top: 2rem; }
     .footer-bottom p { opacity: 0.6; letter-spacing: 0.1em; }
 
     .footer-social { display: flex; gap: 1rem; }

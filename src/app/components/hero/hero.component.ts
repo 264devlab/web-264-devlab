@@ -1,12 +1,15 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
   imports: [],
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss'})
+  styleUrl: './hero.component.scss'
+})
 export class HeroComponent implements AfterViewInit {
   @ViewChild('title') title!: ElementRef;
   @ViewChild('text') text!: ElementRef;
@@ -14,7 +17,18 @@ export class HeroComponent implements AfterViewInit {
   @ViewChild('visual') visual!: ElementRef;
   @ViewChild('glow') glow!: ElementRef;
 
+  constructor(
+    private el: ElementRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  }
+
   ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     let mm = gsap.matchMedia();
 
     mm.add(
@@ -25,6 +39,7 @@ export class HeroComponent implements AfterViewInit {
       },
       (context) => {
         const { reduceMotion } = context.conditions as { reduceMotion: boolean; isDesktop: boolean; isMobile: boolean };
+        const host = this.el.nativeElement;
 
         if (reduceMotion) {
           gsap.set([this.title.nativeElement, this.text.nativeElement, this.cta.nativeElement, this.visual.nativeElement], { autoAlpha: 1, y: 0 });
@@ -44,13 +59,11 @@ export class HeroComponent implements AfterViewInit {
           .to(this.glow.nativeElement, { 
             scale: 1.2, 
             autoAlpha: 0.15, 
-            duration: 4, 
-            repeat: -1, 
-            yoyo: true, 
-            ease: 'sine.inOut' 
-          }, 0);
-          
-        return () => {}; // cleanup
+            duration: 2, 
+            ease: 'power2.out' 
+          }, '-=1');
+
+        return () => {};
       }
     );
   }

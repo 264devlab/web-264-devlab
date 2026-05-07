@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HeroComponent } from './components/hero/hero.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ProcessComponent } from './components/process/process.component';
-import { PhilosophyComponent } from './components/philosophy/philosophy.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SolutionsComponent } from './components/solutions/solutions.component';
 import { WhyUsComponent } from './components/why-us/why-us.component';
@@ -23,7 +22,6 @@ gsap.registerPlugin(ScrollTrigger);
     HeroComponent,
     ServicesComponent,
     ProcessComponent,
-    PhilosophyComponent,
     ContactComponent,
     SolutionsComponent,
     WhyUsComponent,
@@ -57,12 +55,8 @@ export class AppComponent implements AfterViewInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (isPlatformBrowser(this.platformId)) {
-      this.isScrolled = window.scrollY > 50;
-      const header = document.querySelector('header');
-      if (header) {
-        if (this.isScrolled) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-      }
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      this.isScrolled = scrollPosition > 50;
     }
   }
 
